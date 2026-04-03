@@ -1,4 +1,6 @@
-﻿namespace UniBet.Contexts.Profile.Entities
+﻿using UniBet.Contexts.Profile.DTO;
+
+namespace UniBet.Contexts.Profile.Entities
 {
     public class User
     {
@@ -23,11 +25,6 @@
             this.Notifications = new List<Notification>();
         }
 
-        //public User GetUserById(Guid Id)
-        //{
-        //    User user = new User(Guid.NewGuid(), "John Doe", "
-        //    return User;
-        //}
         public void AddAchievement(Achievement achievement)
         {
             this.Achievements.Add(achievement);
@@ -38,21 +35,21 @@
             this.Notifications.Add(notification);
         }
 
-        public void UpdateMainData(string name, string email, string password)
+        public void UpdateMainData(UpdateMainDataDTO data)
         {
-            this.Name = name;
-            this.Email = email;
-            this.Password = password;
+            this.Name = data.Name;
+            this.Email = data.Email;
+            this.Password = data.Password;
         }
-        public void UpdateOptionalData(string phone)
+        public void UpdateOptionalData(UpdateOptionalDataDTO data)
         {
-            this.Phone = phone;
+            this.Phone = data.Phone;
         }
 
-        public void CreateOptionalData(string document, string phone)
+        public void CreateOptionalData(CreateOptionalDataDTO data)
         {
-            this.Document = document;
-            this.Phone = phone;
+            this.Document = data.Document;
+            this.Phone = data.Phone;
         }
 
         public List<Notification> ListNotifications()
